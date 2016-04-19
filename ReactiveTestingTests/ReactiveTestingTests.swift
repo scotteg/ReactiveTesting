@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import ReactiveTesting
 import RxSwift
 import ReactiveCocoa
 import Result
@@ -28,7 +27,7 @@ class ReactiveTestingTests: XCTestCase {
   
   ////////////////////////////////////////////
   
-  // 0.096s (3% stdev)
+  // 0.082s (7% stdev)
   func test_measure_RxSwift_1() {
     measureBlock {
       var counter = 0
@@ -41,7 +40,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  /// 0.189s (3% stdev)
+  /// 0.209s (5% stdev)
   func test_measure_ReactiveCocoa_1() {
     measureBlock {
       var counter = 0
@@ -54,7 +53,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  /// 0.119s (6% stdev)
+  /// 0.124s (6% stdev)
   func test_measure_Bond_1() {
     measureBlock {
       var counter = 0
@@ -67,7 +66,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 0.140s (10% stdev)
+  // 0.147s (4% stdev)
   func test_measure_Interstellar_1() {
     measureBlock {
       var counter = 0
@@ -82,7 +81,7 @@ class ReactiveTestingTests: XCTestCase {
   
   ////////////////////////////////////////////
   
-  // 1.277s (6% stdev)
+  // 1.205s (9% stdev)
   func test_measure_RxSwift_2() {
     measureBlock {
       var counter = 0
@@ -98,7 +97,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 1.897s (5% stdev)
+  // 2.147s (5% stdev)
   func test_measure_ReactiveCocoa_2() {
     measureBlock {
       var counter = 0
@@ -114,7 +113,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 1.247s (4% stdev)
+  // 1.281s (4% stdev)
   func test_measure_Bond_2() {
     measureBlock {
       var counter = 0
@@ -130,7 +129,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 1.562s (3% stdev)
+  // 1.823s (3% stdev)
   func test_measure_Interstellar_2() {
     measureBlock {
       var counter = 0
@@ -148,13 +147,13 @@ class ReactiveTestingTests: XCTestCase {
   
   ////////////////////////////////////////////
   
-  // 3.480s (5% stdev)
+  // 1.787s (6% stdev)
   func test_measure_RxSwift_3() {
     measureBlock {
       let observable = Variable(0)
       
       for _ in 1..<30 {
-        _ = observable.asObservable().filter { $0 % 2 == 0 }.map(String.init).subscribeNext { _ in  }
+        _ = observable.asObservable().filter { $0 % 2 == 0 }.map { $0 }.subscribeNext { _ in  }
       }
       
       for i in 1..<100000 {
@@ -163,13 +162,13 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 11.036s (3% stdev)
+  // 8.009s (2% stdev)
   func test_measure_ReactiveCocoa_3() {
     measureBlock {
       let (signal, observer) = ReactiveCocoa.Signal<Int, NoError>.pipe()
       
       for _ in 1..<30 {
-        signal.filter{ $0 % 2 == 0 }.map(String.init).observeNext { _ in }
+        signal.filter{ $0 % 2 == 0 }.map { $0 }.observeNext { _ in }
       }
       
       for i in 1..<100000 {
@@ -178,13 +177,13 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 5.833s (2% stdev)
+  // 5.367s (3% stdev)
   func test_measure_Bond_3() {
     measureBlock {
       let observable = Observable(0)
       
       for _ in 1..<30 {
-        observable.filter{ $0 % 2 == 0 }.map(String.init).observe { _ in }
+        observable.filter{ $0 % 2 == 0 }.map { $0 }.observe { _ in }
       }
       
       for i in 1..<100000 {
@@ -193,13 +192,13 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 7.772s (3% stdev)
+  // 6.619s (2% stdev)
   func test_measure_Interstellar_3() {
     measureBlock {
       let signal = Interstellar.Signal<Int>()
       
       for _ in 1..<30 {
-        signal.filter{ $0 % 2 == 0 }.map(String.init).next { _ in }
+        signal.filter{ $0 % 2 == 0 }.map { $0 }.next { _ in }
       }
       
       for i in 1..<100000 {
