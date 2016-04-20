@@ -27,7 +27,7 @@ class ReactiveTestingTests: XCTestCase {
   
   ////////////////////////////////////////////
   
-  // 0.082s (7% stdev)
+  // 0.080s (7% stdev)
   func test_measure_RxSwift_1() {
     measureBlock {
       var counter = 0
@@ -40,7 +40,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  /// 0.209s (5% stdev)
+  /// 0.200s (3% stdev)
   func test_measure_ReactiveCocoa_1() {
     measureBlock {
       var counter = 0
@@ -53,7 +53,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  /// 0.124s (6% stdev)
+  /// 0.110s (9% stdev)
   func test_measure_Bond_1() {
     measureBlock {
       var counter = 0
@@ -66,7 +66,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 0.147s (4% stdev)
+  // 0.140s (8% stdev)
   func test_measure_Interstellar_1() {
     measureBlock {
       var counter = 0
@@ -81,7 +81,7 @@ class ReactiveTestingTests: XCTestCase {
   
   ////////////////////////////////////////////
   
-  // 1.205s (9% stdev)
+  // 1.200s (3% stdev)
   func test_measure_RxSwift_2() {
     measureBlock {
       var counter = 0
@@ -97,7 +97,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 2.147s (5% stdev)
+  // 2.090s (2% stdev)
   func test_measure_ReactiveCocoa_2() {
     measureBlock {
       var counter = 0
@@ -113,7 +113,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 1.281s (4% stdev)
+  // 1.250s (3% stdev)
   func test_measure_Bond_2() {
     measureBlock {
       var counter = 0
@@ -129,7 +129,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 1.823s (3% stdev)
+  // 1.770s (1% stdev)
   func test_measure_Interstellar_2() {
     measureBlock {
       var counter = 0
@@ -147,7 +147,7 @@ class ReactiveTestingTests: XCTestCase {
   
   ////////////////////////////////////////////
   
-  // 1.787s (6% stdev)
+  // 1.770s (2% stdev)
   func test_measure_RxSwift_3() {
     measureBlock {
       let observable = Variable(0)
@@ -162,7 +162,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 8.009s (2% stdev)
+  // 7.860s (4% stdev)
   func test_measure_ReactiveCocoa_3() {
     measureBlock {
       let (signal, observer) = ReactiveCocoa.Signal<Int, NoError>.pipe()
@@ -177,7 +177,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 5.367s (3% stdev)
+  // 5.340s (2% stdev)
   func test_measure_Bond_3() {
     measureBlock {
       let observable = Observable(0)
@@ -192,7 +192,7 @@ class ReactiveTestingTests: XCTestCase {
     }
   }
   
-  // 6.619s (2% stdev)
+  // 6.290s (2% stdev)
   func test_measure_Interstellar_3() {
     measureBlock {
       let signal = Interstellar.Signal<Int>()
